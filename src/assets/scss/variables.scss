@@ -3,7 +3,7 @@ $font-fallback: Arial, sans-serif;
 $font-primary: 'Helvetica', $font-fallback;
 
 /* transitions */
-$transition-default: .2s ease-in-out;
+$transition: 0.2s ease-in-out;
 
 /* breakpoints */
 $xxl: 1440px;
@@ -11,3 +11,9 @@ $xl: 1280px;
 $lg: 1024px;
 $md: 768px;
 $sm: 576px;
+
+/* colors */
+$link: #727272;
+$link-hover: #333;
+$link-active: #000;
+$button: #387D52;
