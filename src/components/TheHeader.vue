@@ -1,9 +1,8 @@
 <template>
-    <TheHeader />
+	<header class="header">Engage with celebrities and earn</header>
 </template>
 
 <script lang="ts" setup>
-import TheHeader from '@/components/TheHeader.vue'
 </script>
 
 <style lang="scss">

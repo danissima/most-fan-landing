@@ -1,0 +1,13 @@
+/* fonts */
+$font-fallback: Arial, sans-serif;
+$font-primary: 'Helvetica', $font-fallback;
+
+/* transitions */
+$transition-default: .2s ease-in-out;
+
+/* breakpoints */
+$xxl: 1440px;
+$xl: 1280px;
+$lg: 1024px;
+$md: 768px;
+$sm: 576px;

@@ -1,0 +1,13 @@
+@mixin break($breakpoint) {
+    @media (max-width: ($breakpoint - 1px)) {
+        @content;
+    }
+}
+
+@mixin hover {
+    @include break-min($lg) {
+        &:hover {
+            @content;
+        }
+    }
+}
