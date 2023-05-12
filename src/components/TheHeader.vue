@@ -15,17 +15,33 @@
 			</nav>
 		</div>
 		<div class="header__controls">
-			<AppLinkDropdown title="Resources" :items="resourcesItems" />
+			<AppLinkDropdown class="header__resources" title="Resources" :items="resourcesItems" />
 			<AppButton>Sign up</AppButton>
+			<AppButton
+				class="header__burger"
+				kind="unstyled"
+				@click="setIsBurgerMenuOpened(true)"
+			>
+				<AppIcon id="burger-menu" />
+			</AppButton>
 		</div>
 	</header>
+	<TheBurgerMenu
+		:links="links"
+		:resources-items="resourcesItems"
+		:is-opened="isBurgerMenuOpened"
+		@close="setIsBurgerMenuOpened(false)"
+	/>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import AppButton from '@/components/AppButton.vue'
 import AppLinkDropdown, { IDropdownItem } from '@/components/AppLinkDropdown.vue'
+import AppIcon from '@/components/AppIcon.vue'
+import TheBurgerMenu from '@/components/TheBurgerMenu.vue'
 
-interface ILink {
+export interface ILink {
 	href: string
 	title: string
 }
@@ -67,6 +83,12 @@ const resourcesItems: IDropdownItem[] = [
 		title: 'Marketplace',
 	},
 ]
+
+const isBurgerMenuOpened = ref<boolean>(false)
+
+function setIsBurgerMenuOpened(isOpened: boolean): void {
+	isBurgerMenuOpened.value = isOpened
+}
 </script>
 
 <style lang="scss">
@@ -76,13 +98,14 @@ const resourcesItems: IDropdownItem[] = [
 		display: flex;
 		padding: 12px 42px;
 
-		&__navigation {
-			align-items: center;
-			display: flex;	
+		@include break($xl) {
+			padding: 12px 16px;
 		}
 
-		&__logo {
-			margin-right: 56px;
+		&__navigation {
+			align-items: center;
+			gap: 56px;
+			display: flex;	
 		}
 
 		&__logo > a {
@@ -91,6 +114,12 @@ const resourcesItems: IDropdownItem[] = [
 
 			@include hover {
 				transform: scale(1.1);
+			}
+		}
+
+		@include break($xl) {
+			&__nav {
+				display: none;
 			}
 		}
 
@@ -123,6 +152,20 @@ const resourcesItems: IDropdownItem[] = [
 			gap: 32px;
 			align-items: center;
 			display: flex;
+		}
+
+		@include break($xl) {
+			&__resources {
+				display: none;
+			}
+		}
+
+		&__burger {
+			display: none;
+
+			@include break($xl) {
+				display: flex;
+			}
 		}
 	}
 </style>
