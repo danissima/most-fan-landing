@@ -3,12 +3,32 @@ body {
     font-size: 24px;
     font-weight: 400;
     line-height: 33px;
+
+    @include break($sm) {
+        font-size: 18px;
+        line-height: 24px;
+    }
 }
 
 h1 {
     font-size: 148px;
     font-weight: 700;
     line-height: 166px;
+
+    @include break($xl) {
+        font-size: 96px;
+        line-height: 100px;
+    }
+
+    @include break($md) {
+        font-size: 68px;
+        line-height: 70px;
+    }
+
+    @include break($sm) {
+        font-size: 44px;
+        line-height: 46px;
+    }
 }
 
 button {

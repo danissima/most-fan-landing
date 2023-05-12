@@ -20,9 +20,17 @@ import AppContainer from './AppContainer.vue'
 .section-promo {
     padding: 128px 0 175px;
 
+    @include break($lg) {
+        padding-top: 104px;
+    }
+
     &__content {
         align-items: center;
         display: flex;
+
+        @include break($lg) {
+            text-align: center;
+        }
     }
 
     &__title {
