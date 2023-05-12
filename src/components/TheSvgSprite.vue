@@ -1,0 +1,8 @@
+<template>
+    <svg style="display: none;">
+        <!-- C -->
+        <symbol id="chevron-down" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.9375 6.46875L9 11.5312L14.0625 6.46875" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+    </svg>
+</template>

@@ -1,20 +1,18 @@
 <template>
-	<button class="app-button" :type="buttonType">
+	<button class="app-button" :type="props.type">
 		<slot />
 	</button>
 </template>
 
 <script lang="ts" setup>
-import { ButtonHTMLAttributes, computed } from 'vue'
+import { ButtonHTMLAttributes } from 'vue'
 
 interface IProps {
 	type?: ButtonHTMLAttributes['type']
 }
 
-const props = defineProps<IProps>()
-
-const buttonType = computed(() => {
-	return props.type || 'button'
+const props = withDefaults(defineProps<IProps>(), {
+	type: 'button',
 })
 </script>
 
@@ -23,15 +21,15 @@ const buttonType = computed(() => {
 	transition: $transition;
 	border-radius: 32px;
 	padding: 12px 32px;
-	background-color: $button;
+	background-color: $color-primary;
 	color: #fff;
 
 	@include hover {
-		background-color: darken($button, 3%);
+		background-color: darken($color-primary, 3%);
 	}
 
 	&:active {
-		background-color: darken($button, 7%);
+		background-color: darken($color-primary, 7%);
 	}
 }
 </style>

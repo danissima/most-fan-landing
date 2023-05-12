@@ -6,14 +6,12 @@ $font-primary: 'Helvetica', $font-fallback;
 $transition: 0.2s ease-in-out;
 
 /* breakpoints */
-$xxl: 1440px;
-$xl: 1280px;
-$lg: 1024px;
+$xxl: 1600px;
+$xl: 1200px;
+$lg: 992px;
 $md: 768px;
 $sm: 576px;
 
 /* colors */
-$link: #727272;
-$link-hover: #333;
-$link-active: #000;
-$button: #387D52;
+$color-primary: #387D52;
+$color-link: #727272;

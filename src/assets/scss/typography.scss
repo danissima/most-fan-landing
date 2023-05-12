@@ -2,12 +2,18 @@ body {
     font-family: $font-primary;
     font-size: 24px;
     font-weight: 400;
-    line-height: 136%;
+    line-height: 33px;
+}
+
+h1 {
+    font-size: 148px;
+    font-weight: 700;
+    line-height: 166px;
 }
 
 button {
     font-family: $font-primary;
     font-size: 16px;
-    line-height: 136%;
+    line-height: 22px;
     font-weight: 400;
 }

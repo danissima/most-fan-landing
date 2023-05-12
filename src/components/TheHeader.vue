@@ -15,13 +15,15 @@
 			</nav>
 		</div>
 		<div class="header__controls">
+			<AppLinkDropdown title="Resources" :items="resourcesItems" />
 			<AppButton>Sign up</AppButton>
 		</div>
 	</header>
 </template>
 
 <script lang="ts" setup>
-import AppButton from './AppButton.vue'
+import AppButton from '@/components/AppButton.vue'
+import AppLinkDropdown, { IDropdownItem } from '@/components/AppLinkDropdown.vue'
 
 interface ILink {
 	href: string
@@ -32,6 +34,25 @@ const links: ILink[] = [
 	{
 		href: '#',
 		title: 'Home',
+	},
+	{
+		href: '#',
+		title: 'Launchpad',
+	},
+	{
+		href: '#',
+		title: 'Exchange',
+	},
+	{
+		href: '#',
+		title: 'Marketplace',
+	},
+]
+
+const resourcesItems: IDropdownItem[] = [
+	{
+		href: '#',
+		title: 'Roadmap',
 	},
 	{
 		href: '#',
@@ -64,24 +85,44 @@ const links: ILink[] = [
 			margin-right: 56px;
 		}
 
+		&__logo > a {
+			display: flex;
+			transition: transform $transition;
+
+			@include hover {
+				transform: scale(1.1);
+			}
+		}
+
 		&__list {
 			gap: 48px;
 			display: flex;
 		}
 
-		&__link {
-			transition: $transition;
-			padding: 0 4px;
+		&__list > li {
 			font-size: 14px;
-			color: $link;
+			font-weight: 300;
+			line-height: 19px;
+		}
+
+		&__link {
+			transition: color $transition;
+			padding: 0 4px;
+			color: $color-link;
 
 			@include hover {
-				color: $link-hover;
+				color: darken($color-link, 50%);
 			}
 
 			&:active {
-				color: $link-active;
+				color: $color-primary;
 			}
+		}
+
+		&__controls {
+			gap: 32px;
+			align-items: center;
+			display: flex;
 		}
 	}
 </style>
