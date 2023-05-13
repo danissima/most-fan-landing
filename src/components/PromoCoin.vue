@@ -15,6 +15,7 @@ import {
 	Scene,
 	WebGLRenderer,
 } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 const SCENE_WIDTH = 653
 const SCENE_HEIGHT = 697
@@ -61,6 +62,11 @@ discsGroup.add(biggerDisc)
 discsGroup.add(smallerDisc)
 
 scene.add(discsGroup)
+
+const loader = new GLTFLoader()
+loader.load('/most-fan-landing/models/scene.gltf', (gltf) => {
+	scene.add(gltf.scene)
+})
 
 /* setting up renderer */
 onMounted(() => {
