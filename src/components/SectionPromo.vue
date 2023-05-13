@@ -30,17 +30,11 @@ import PromoCoin from '@/components/PromoCoin.vue'
 
     &__content {
         align-items: center;
-        gap: 24px;
         display: flex;
 
         @include break($lg) {
             flex-direction: column;
-            gap: 84px;
             text-align: center;
-        }
-
-        @include break($sm) {
-            gap: 34px;
         }
     }
 
@@ -50,6 +44,15 @@ import PromoCoin from '@/components/PromoCoin.vue'
 
     &__text {
         flex: 7;
+        margin-right: 24px;
+
+        @include break($lg) {
+            margin: 0 0 84px 0;
+        }
+
+        @include break($sm) {
+            margin-bottom: 34px;
+        }
     }
 
     &__coin {

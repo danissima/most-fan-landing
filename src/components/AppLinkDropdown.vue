@@ -38,7 +38,6 @@ const props = defineProps<IProps>()
 
     &__title {
         align-items: center;
-        gap: 6px;
         display: flex;
         transition: color $transition;
         padding: 0 4px;
@@ -47,6 +46,10 @@ const props = defineProps<IProps>()
         font-weight: 300;
         line-height: 19px;
         color: $color-link;
+
+        & > svg {
+            margin-left: 6px;
+        }
 
         @include hover {
             color: $color-primary;

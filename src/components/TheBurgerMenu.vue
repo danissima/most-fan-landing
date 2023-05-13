@@ -150,7 +150,6 @@ function closeBurgerMenu(): void {
 
     &__list {
         flex-direction: column;
-        gap: 32px;
         display: flex;
         padding: 0 16px;
     }
@@ -160,6 +159,7 @@ function closeBurgerMenu(): void {
     }
 
     &__subtitle {
+        margin-bottom: 32px;
         font-size: 12px;
         font-weight: 400;
         line-height: 12px;
@@ -169,6 +169,10 @@ function closeBurgerMenu(): void {
     &__item {
         font-size: 18px;
         line-height: 24px;
+
+        & + & {
+            margin-top: 32px;
+        }
     }
 
     &__link {
@@ -190,17 +194,21 @@ function closeBurgerMenu(): void {
     flex-direction: column;
     align-items: center;
     display: flex;
-    gap: 32px;
     padding: 32px 0;
     background-color: $color-dark;
 
     &__socials {
-        gap: 32px;
         display: flex;
+        margin-bottom: 32px;
     }
 
     &__social {
         line-height: 19px;
+
+        & + & {
+            margin-left: 32px;
+        }
+
         a {
             color: #fff;
         }

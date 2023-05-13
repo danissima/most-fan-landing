@@ -104,7 +104,6 @@ function setIsBurgerMenuOpened(isOpened: boolean): void {
 
 		&__navigation {
 			align-items: center;
-			gap: 56px;
 			display: flex;	
 		}
 
@@ -117,14 +116,15 @@ function setIsBurgerMenuOpened(isOpened: boolean): void {
 			}
 		}
 
-		@include break($xl) {
-			&__nav {
+		&__nav {
+			margin-left: 56px;
+
+			@include break($xl) {
 				display: none;
 			}
 		}
 
 		&__list {
-			gap: 48px;
 			display: flex;
 		}
 
@@ -132,6 +132,10 @@ function setIsBurgerMenuOpened(isOpened: boolean): void {
 			font-size: 14px;
 			font-weight: 300;
 			line-height: 19px;
+
+			& + li {
+				margin-left: 48px; 
+			}
 		}
 
 		&__link {
@@ -149,13 +153,14 @@ function setIsBurgerMenuOpened(isOpened: boolean): void {
 		}
 
 		&__controls {
-			gap: 32px;
 			align-items: center;
 			display: flex;
 		}
 
-		@include break($xl) {
-			&__resources {
+		&__resources {
+			margin-right: 32px;
+
+			@include break($xl) {
 				display: none;
 			}
 		}
@@ -165,6 +170,7 @@ function setIsBurgerMenuOpened(isOpened: boolean): void {
 
 			@include break($xl) {
 				display: flex;
+				margin-left: 32px;
 			}
 		}
 	}
