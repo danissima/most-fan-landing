@@ -1,5 +1,5 @@
 module.exports = {
-	publicPath: process.env.NODE_ENV === 'production' ? '/profile-page/' : '/',
+	publicPath: process.env.NODE_ENV === 'production' ? '/most-fan-landing/' : '/',
 	css: {
 		loaderOptions: {
 			scss: {

@@ -20,9 +20,9 @@ module.exports = {
 		'indent': ['error', 'tab'],
 	},
 	globals: {
-		defineProps: "readonly",
-		defineEmits: "readonly",
-		defineExpose: "readonly",
-		withDefaults: "readonly"
-  	},
+		defineProps: 'readonly',
+		defineEmits: 'readonly',
+		defineExpose: 'readonly',
+		withDefaults: 'readonly',
+	},
 }
