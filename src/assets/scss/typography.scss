@@ -15,6 +15,11 @@ h1 {
     font-weight: 700;
     line-height: 166px;
 
+    @include break($xxl) {
+        font-size: 124px;
+        line-height: 128px;
+    }
+
     @include break($xl) {
         font-size: 96px;
         line-height: 100px;

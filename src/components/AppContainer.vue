@@ -11,7 +11,7 @@
 .app-container {
     margin: 0 auto;
     width: 100%;
-    max-width: 1600px;
+    max-width: calc(1600px + 42px * 2);
     padding: 0 42px;
 }
 </style>
