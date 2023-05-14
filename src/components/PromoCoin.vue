@@ -1,83 +1,74 @@
 <template>
-    <canvas class="promo-coin" ref="coin" />
+    <canvas class="promo-coin" ref="canvas" />
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue'
 import {
-	AmbientLight,
-	CylinderGeometry,
 	DirectionalLight,
 	Group,
 	Mesh,
 	MeshStandardMaterial,
-	PerspectiveCamera,
+	OrthographicCamera,
 	Scene,
 	WebGLRenderer,
 } from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
 const SCENE_WIDTH = 653
 const SCENE_HEIGHT = 697
-const coin = ref<HTMLCanvasElement | null>(null)
+const canvas = ref<HTMLCanvasElement | null>(null)
 
 /* adding scene and camera */
 const scene = new Scene()
-const camera = new PerspectiveCamera(
-	75,
-	SCENE_WIDTH / SCENE_HEIGHT,
-	0.1,
-	1000,
-)
-
-camera.position.z = 4.5
+const camera = new OrthographicCamera(-1.7, 1.7, 1.8, -1.8, 0.1, 1000)
+camera.position.z = 5
 scene.add(camera)
 
-/* adding ambient light */
-const ambientLight = new AmbientLight(0xffffff, 1)
-scene.add(ambientLight)
-
 /* adding directional light */
-const directionalLight = new DirectionalLight(0xffffff, 2)
-directionalLight.rotation.set(3, 0, 0)
-directionalLight.position.set(0, -3, 1)
+const directionalLight = new DirectionalLight(0xced4f0, 0.5)
+directionalLight.position.set(0, -6, 4)
 scene.add(directionalLight)
 
-/* adding bigger disc*/
-const biggerDisc = new Mesh(
-	new CylinderGeometry(2.5, 2.5, 0.3, 64),
-	new MeshStandardMaterial({ color: 0xa4adc1, roughness: 0, metalness: 0.5 }),
-)
+/* loading coin model */
+let coin: Group | null = null
+const loader = new GLTFLoader()
+loader.load('/models/token/2-side-token.gltf', (gltf) => {
+	coin = gltf.scene
+	coin.traverse((child) => {
+		const mesh = child as Mesh
+		if (mesh.material) {
+			const material = mesh.material as MeshStandardMaterial
+			material.color.r = 255
+			material.color.g = 255
+			material.color.b = 255
+		}
+	})
 
-/* adding smaller disc */
-const smallerDisc = new Mesh(
-	new CylinderGeometry(2.3, 2.3, 0.2, 64),
-	new MeshStandardMaterial({ color: 0xa4adc1, roughness: 0, metalness: 0.5 }),
-)
-smallerDisc.position.y += 0.15
+	coin.rotation.x -= 0.3
+	coin.rotation.y += 0.6
 
-/* adding discs to the group */
-const discsGroup = new Group()
-discsGroup.add(biggerDisc)
-discsGroup.add(smallerDisc)
-
-scene.add(discsGroup)
+	scene.add(coin)
+})
 
 /* setting up renderer */
 onMounted(() => {
 	const renderer = new WebGLRenderer({
 		alpha: true,
 		antialias: true,
-		canvas: coin.value as HTMLCanvasElement,
+		canvas: canvas.value as HTMLCanvasElement,
 	})
 
 	renderer.setSize(SCENE_WIDTH, SCENE_HEIGHT, false)
 
 	function animate() {
-		requestAnimationFrame( animate )
-		discsGroup.rotation.x += 0.01
-		discsGroup.rotation.y += 0.01
-		discsGroup.rotation.z += 0.01
-		renderer.render( scene, camera )
+		requestAnimationFrame(animate)
+		if (coin) {
+			coin.rotation.y += 0.01
+			coin.rotation.z += 0.01
+		}
+
+		renderer.render(scene, camera)
 	}
 
 	animate()
